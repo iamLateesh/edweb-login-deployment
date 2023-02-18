@@ -24,7 +24,7 @@
           stage ('Helm Chart') {
             container('deploy') {
               dir('charts') {
-                withCredentials([usernamePassword(credentialsId: 'jfrog', usernameVariable: 'username', passwordVariable: 'password')]) {
+                withCredentials([usernamePassword(credentialsId: 'Jfrog', usernameVariable: 'username', passwordVariable: 'password')]) {
                       sh '/usr/local/bin/helm repo add edweb-helm-local https://lateesh.jfrog.io/artifactory/api/helm/edweb-helm-local --username $username --password $password'
                       sh "/usr/local/bin/helm repo update"
                       sh "/usr/local/bin/helm install dptweb-dev --namespace dev -f values.yaml ."
